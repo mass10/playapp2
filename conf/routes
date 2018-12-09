@@ -5,7 +5,11 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
+
+# 単純な文字列を返すアクション
 GET     /hello                      controllers.HomeController.hello
+
+# 単純な JSON を返すアクション
 GET     /hello-json                 controllers.HomeController.hello_json
 
 # Map static resources from the /public folder to the /assets URL path
