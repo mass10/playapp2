@@ -24,21 +24,35 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   }
 
   //
-  // text/plain
+  // 単純な GET リクエストに対して text/plain を返します。
   //
   def hello() = Action { implicit request: Request[AnyContent] =>
     Ok("hello!")
   }
 
   //
-  // application/json
+  // 単純な GET リクエストに対して application/json を返します。
   //
   def hello_json() = Action { implicit request: Request[AnyContent] =>
-  var locations = (
-    Map("address" -> "135-0033 東京都江東区深川 99-99-99", "email" -> "jimi.hendrix@docomo.ne.jp"),
+    val locations = (
+      Map("address" -> "135-0033 東京都江東区深川 99-99-99", "email" -> "jimi.hendrix@docomo.ne.jp"),
+      Map("address" -> "603-8467 京都府京都市北区鷹峯南鷹峯町 999-999", "email" -> "jimi.hendrix@docomo.ne.jp"),
+    )
+    val json = Json.toJson(locations)
+    Ok(json)
+  }
+
+  //
+  // 単純な JSON リクエストに対して application/json を返します。
+  //
+  def search() = Action { implicit request: Request[AnyContent] =>
+    val locations = (
+      Map("address" -> "135-0033 東京都江東区深川 99-99-99", "email" -> "jimi.hendrix@docomo.ne.jp"),
       Map("address" -> "603-8467 京都府京都市北区鷹峯南鷹峯町 999-999", "email" -> "jimi.hendrix@docomo.ne.jp"),
     )
     val json = Json.toJson(locations)
     Ok(json)
   }
 }
+
+
