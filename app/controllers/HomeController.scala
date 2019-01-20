@@ -50,14 +50,13 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
       MapEntry(address = "603-8467 京都府京都市北区鷹峯南鷹峯町 999-999", email = "jimi.hendrix@docomo.ne.jp"),
     )
     val result = locations.map(e => { e.address })
-    implicit val mapEntryWriter = Json.writes[MapEntry]
     val json = Json.toJson(result)
     Ok(json).as(contentType = "application/json")
   }
 }
 
 case class MapEntry(address: String, email: String) {
-  //  def asJson() = Json.toJson(this)
+
 }
 
 object MapEntry {
